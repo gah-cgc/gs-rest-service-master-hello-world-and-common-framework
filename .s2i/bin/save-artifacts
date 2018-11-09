@@ -1,0 +1,3 @@
+#!/bin/sh
+cd /usr/local/s2i/
+/usr/local/s2i/save-artifacts
