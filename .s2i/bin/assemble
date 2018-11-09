@@ -25,7 +25,7 @@ ls -lR /tmp
 
 JVM_OPTION_FILE=/opt/run-java/java-default-options
 if [[ -z "${MAVEN_OPTS}" ]] && [[ -x "${JVM_OPTION_FILE}" ]]; then
-    export MAVEN_OPTS="${JVM_OPTION_FILE}"
+    export MAVEN_OPTS="cat ${JVM_OPTION_FILE}"
     echo "Setting MAVEN_OPTS to ${MAVEN_OPTS}"
 fi
 
