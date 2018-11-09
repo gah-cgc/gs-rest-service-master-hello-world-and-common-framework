@@ -21,11 +21,10 @@ echo "S2I_SCRIPT_DIR=$S2I_SCRIPT_DIR"
 # Run pre-build step with Maven
 mkdir -p /tmp/artifacts/configuration/
 cp ${S2I_SCRIPT_DIR}/jboss-settings.xml /tmp/artifacts/configuration/settings.xml
-ls -lR /tmp
 
-JVM_OPTION_FILE=/opt/run-java/java-default-options
-if [[ -z "${MAVEN_OPTS}" ]] && [[ -x "${JVM_OPTION_FILE}" ]]; then
-    export MAVEN_OPTS=`cat ${JVM_OPTION_FILE}`
+JVM_OPTION_SCRIPT=/opt/run-java/java-default-options
+if [[ -z "${MAVEN_OPTS}" ]] && [[ -x "${JVM_OPTION_SCRIPT}" ]]; then
+    export MAVEN_OPTS=`${JVM_OPTION_SCRIPT}`
     echo "Setting MAVEN_OPTS to ${MAVEN_OPTS}"
 fi
 
