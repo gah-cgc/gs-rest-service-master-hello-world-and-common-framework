@@ -28,7 +28,7 @@ if [[ -z "${MAVEN_OPTS}" -a -x "$JVM_OPTION_FILE" ]]; then
 export MAVEN_OPTS="${JVM_OPTION_FILE}"
 echo "Setting MAVEN_OPTS to ${MAVEN_OPTS}"
 fi
-s
+
 cd ${S2I_SOURCE_DIR}
 ${MVN_SHOW_VERSION_CMDLINE}
 echo "Running command: $MVN_RELEASE_CMDLINE"
