@@ -24,5 +24,7 @@
 # echo ############################################
 
 #$ORIG_SCRIPT_DIR/assemble
+
+echo Hello GAH, this is the bootstrap assemble script...
 cd /usr/local/s2i/
 /usr/local/s2i/assemble
