@@ -8,8 +8,7 @@ echo "##"
 DEFAULT_DIR=$(pwd)
 S2I_SCRIPT_DIR=/usr/local/s2i
 MVN_SHOW_VERSION_CMDLINE="mvn -v"
-# -s/tmp/artifacts/configuration/settings.xml
-MVN_S2I_BUILD_ARGS="-e -Popenshift -Dmaven.repo.local=/tmp/artifacts/m2 -DskipTests -Dcom.redhat.xpaas.repo.redhatga -Dfabric8.skip=true -Djava.net.preferIPv4Stack=true"
+MVN_S2I_BUILD_ARGS="-e -s/tmp/artifacts/configuration/settings.xml -Popenshift -Dmaven.repo.local=/tmp/artifacts/m2 -DskipTests -Dcom.redhat.xpaas.repo.redhatga -Dfabric8.skip=true -Djava.net.preferIPv4Stack=true"
 MVN_USE_LATEST_VERSION_BUILD_ARGS="-U -DallowSnapshots=false -DfailIfNotReplaced=true -Dincludes=com.capgroup.equitytrading versions:use-latest-versions"
 MVN_RELEASE_CMDLINE="mvn -B ${MVN_S2I_BUILD_ARGS} ${MVN_USE_LATEST_VERSION_BUILD_ARGS}"
 source ${S2I_SCRIPT_DIR}/s2i-setup
@@ -20,6 +19,7 @@ echo "S2I_SOURCE_DIR=$S2I_SOURCE_DIR"
 echo "S2I_SCRIPT_DIR=$S2I_SCRIPT_DIR"
 
 # Run pre-build step with Maven
+cp ${S2I_SCRIPT_DIR}/jboss-settings.xml /tmp/artifacts/configuration/settings.xml
 cd ${S2I_SOURCE_DIR}
 ${MVN_SHOW_VERSION_CMDLINE}
 echo "Running command: $MVN_RELEASE_CMDLINE"
