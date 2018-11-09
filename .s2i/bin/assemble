@@ -24,7 +24,7 @@ cp ${S2I_SCRIPT_DIR}/jboss-settings.xml /tmp/artifacts/configuration/settings.xm
 ls -lR /tmp
 
 JVM_OPTION_FILE=/opt/run-java/java-default-options
-if [[-z "${MAVEN_OPTS}"]] && [[-x "${JVM_OPTION_FILE}"]]; then
+if [[ -z "${MAVEN_OPTS}" ]] && [[ -x "${JVM_OPTION_FILE}" ]]; then
     export MAVEN_OPTS="${JVM_OPTION_FILE}"
     echo "Setting MAVEN_OPTS to ${MAVEN_OPTS}"
 fi
