@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Debug mode
+if [[ "${SCRIPT_DEBUG}" = "true" ]]; then
+    set -x
+    echo "Script debugging is enabled, allowing bash commands and their arguments to be printed as they are executed"
+fi
+
 echo "############################################"
 echo "## Begin ETP Custom Pre-Build Step: assemble"
 echo "##"
@@ -25,7 +31,7 @@ cp ${S2I_SCRIPT_DIR}/jboss-settings.xml /tmp/artifacts/configuration/settings.xm
 JVM_OPTION_SCRIPT=/opt/run-java/java-default-options
 if [[ -z "${MAVEN_OPTS}" ]] && [[ -x "${JVM_OPTION_SCRIPT}" ]]; then
     export MAVEN_OPTS=`${JVM_OPTION_SCRIPT}`
-    echo "Setting MAVEN_OPTS to ${MAVEN_OPTS}"
+    echo "MAVEN_OPTS=${MAVEN_OPTS}"
 fi
 
 cd ${S2I_SOURCE_DIR}
