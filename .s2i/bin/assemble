@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# ORIG_SCRIPT_DIR=/usr/local/s2i
+# ORIG_S2I_SOURCE_DIR=/tmp/src
+# echo ############################################
+# echo ## Begin ETP Custom Pre-Build Step: assemble
+# echo ## 
+# DEFAULT_DIR=$(pwd)
+# echo CURR_DIR=$DEFAULT_DIR
+# echo ORIG_SCRIPT_DIR=$ORIG_SCRIPT_DIR
+# echo ORIG_S2I_SOURCE_DIR=$ORIG_S2I_SOURCE_DIR
+# #source "${ORIG_SCRIPT_DIR}/s2i-setup"
+# pwd
+# #cd ${S2I_SOURCE_DIR}
+# cd ${ORIG_S2I_SOURCE_DIR}
+# pwd
+# echo Running command:  mvn -B -U versions:use-latest-versions -DallowSnapshots=false -DfailIfNotReplaced=true -Dincludes=com.capgroup.equitytrading
+# #mvn -B -U versions:use-latest-versions -DallowSnapshots=false -DfailIfNotReplaced=true -Dincludes=com.capgroup.equitytrading
+# mvn -v
+# diff pom.xml pom.xml.versionsBackup
+# cd ${DEFAULT_DIR}
+# echo ##
+# echo ## End ETP Custom Pre-Build Step: assemble
+# echo ############################################
+
+#$ORIG_SCRIPT_DIR/assemble
+cd /usr/local/s2i/
+/usr/local/s2i/assemble
