@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 echo "############################################"
 echo "## Begin ETP Custom Pre-Build Step: assemble"
@@ -6,15 +6,14 @@ echo "##"
 
 # Setup environment variables
 DEFAULT_DIR=$(pwd)
-S2I_SOURCE_DIR=/tmp/src
 REAL_SCRIPT_DIR=/usr/local/s2i
 MVN_CMDLINE="mvn -B -U versions:use-latest-versions -DallowSnapshots=false -DfailIfNotReplaced=true -Dincludes=com.capgroup.equitytrading"
+source ${REAL_SCRIPT_DIR}/s2i-setup
 
 # Print environment variables
 echo "CURR_DIR=$DEFAULT_DIR"
 echo "S2I_SOURCE_DIR=$S2I_SOURCE_DIR"
 echo "REAL_SCRIPT_DIR=$REAL_SCRIPT_DIR"
-#source "${REAL_SCRIPT_DIR}/s2i-setup"
 
 # Run pre-build step with Maven
 pwd
@@ -23,10 +22,12 @@ pwd
 mvn -v
 echo "Running command: $MVN_CMDLINE"
 ${MVN_CMDLINE}
+
+echo "Changes made to pom.xml:"
 diff pom.xml pom.xml.versionsBackup
-cd ${DEFAULT_DIR}
 
 # Proceed to the platform provided build process
+cd ${DEFAULT_DIR}
 ${REAL_SCRIPT_DIR}/assemble
 
 echo "##"
