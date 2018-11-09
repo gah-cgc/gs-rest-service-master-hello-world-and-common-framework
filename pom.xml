@@ -139,7 +139,7 @@
                                 <argument>-Djava.net.preferIPv4Stack=true</argument>
                                 <argument>clean</argument>
                                 <argument>install</argument>
-                                <argument>package</argument>
+                                <argument>spring-boot:repackage</argument>
                             </arguments>
                         </configuration>
                     </execution>
