@@ -19,6 +19,7 @@ echo "S2I_SOURCE_DIR=$S2I_SOURCE_DIR"
 echo "S2I_SCRIPT_DIR=$S2I_SCRIPT_DIR"
 
 # Run pre-build step with Maven
+mkdir -p /tmp/artifacts/configuration/
 cp ${S2I_SCRIPT_DIR}/jboss-settings.xml /tmp/artifacts/configuration/settings.xml
 cd ${S2I_SOURCE_DIR}
 ${MVN_SHOW_VERSION_CMDLINE}
