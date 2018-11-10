@@ -16,7 +16,8 @@ S2I_SCRIPT_DIR=/usr/local/s2i
 MVN_SHOW_VERSION_CMDLINE="mvn -v"
 MVN_S2I_BUILD_ARGS="-Dmaven.repo.local=/tmp/artifacts/m2 -s/tmp/artifacts/configuration/settings.xml -Djava.net.preferIPv4Stack=true -DskipTests"
 MVN_USE_LATEST_VERSION_BUILD_ARGS="-U -DallowSnapshots=false -DfailIfNotReplaced=true -Dincludes=com.capgroup.equitytrading versions:use-latest-versions"
-MVN_RELEASE_CMDLINE="mvn -B ${MVN_S2I_BUILD_ARGS} ${MVN_USE_LATEST_VERSION_BUILD_ARGS}"
+#gah: MVN_RELEASE_CMDLINE="mvn -B ${MVN_S2I_BUILD_ARGS} ${MVN_USE_LATEST_VERSION_BUILD_ARGS}"
+MVN_RELEASE_CMDLINE="mvn -B ${MVN_USE_LATEST_VERSION_BUILD_ARGS}"
 source ${S2I_SCRIPT_DIR}/s2i-setup
 
 # Print environment variables
